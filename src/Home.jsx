@@ -1,6 +1,7 @@
 import React from "react";
 import QuickLinkCard from "./components/QuickLinkCard";
 import { Search, MapPin, AlertCircle } from "lucide-react"; // Example icons from lucide-react
+import Home from "./pages/home.jsx";
 
 function Home() {
   return (

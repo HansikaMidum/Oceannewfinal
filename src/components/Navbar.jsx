@@ -1,36 +1,35 @@
-import { useState, useEffect } from 'react';
-import { Sun, Moon } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Menu } from 'lucide-react';
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem('theme') === 'dark'
-  );
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
-
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md p-4 flex justify-between items-center">
-      <h1 className="text-xl font-bold text-blue-600 dark:text-blue-400">OceanMedic</h1>
-      <ul className="flex space-x-4">
-        <li><Link to="/" className="text-gray-700 dark:text-gray-300">Home</Link></li>
-        <li><Link to="/first-aid" className="text-gray-700 dark:text-gray-300">First Aid</Link></li>
-        <li><Link to="/hospitals" className="text-gray-700 dark:text-gray-300">Hospitals</Link></li>
-        <li><Link to="/contacts" className="text-gray-700 dark:text-gray-300">Emergency</Link></li>
-        <li><Link to="/tourism" className="text-gray-700 dark:text-gray-300">Tourism</Link></li>
-        <li><Link to="/about" className="text-gray-700 dark:text-gray-300">About</Link></li>
-      </ul>
-      <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
-        {darkMode ? <Sun className="text-yellow-400" /> : <Moon className="text-gray-800" />}
-      </button>
+    <nav className="bg-blue-800 text-white p-4 fixed w-full top-0 left-0 z-10 shadow-lg">
+      <div className="container mx-auto flex justify-between items-center">
+        {/* Logo or Title */}
+        <div className="text-xl font-bold">
+          <Link to="/" className="hover:text-gray-300">OceanMedic</Link>
+        </div>
+
+        {/* Navbar Links */}
+        <ul className="hidden md:flex space-x-8">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/venomous-animals">Venomous Animals</Link></li>
+          <li><Link to="/first-aid">First Aid</Link></li>
+          <li><Link to="/emergency">Emergency</Link></li>
+          <li><Link to="/hospitals">Hospitals</Link></li>
+          <li><Link to="/map">Map</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+
+        {/* Menu Icon for Mobile */}
+        <div className="md:hidden">
+          <button className="text-white">
+            <Menu size={24} />
+          </button>
+        </div>
+      </div>
     </nav>
   );
 };
